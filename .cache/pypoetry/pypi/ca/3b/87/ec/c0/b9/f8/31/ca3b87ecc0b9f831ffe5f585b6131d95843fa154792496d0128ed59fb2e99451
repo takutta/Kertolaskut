@@ -1,1 +1,0 @@
-9999999999{"name": "pyobjc-framework-Cocoa", "version": "8.5.1", "summary": "Wrappers for the Cocoa frameworks on macOS", "platform": "MacOS X", "requires_dist": ["pyobjc-core (>=8.5.1)"], "requires_python": ">=3.6", "files": [], "_cache_version": "1.0.0"}

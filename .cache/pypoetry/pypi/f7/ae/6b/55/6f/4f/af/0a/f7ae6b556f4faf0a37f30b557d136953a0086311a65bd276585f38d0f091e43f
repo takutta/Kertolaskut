@@ -1,1 +1,0 @@
-9999999999{"name": "watchfiles", "version": "0.16.1", "summary": "Simple, modern and high performance file watching and code reload in python.", "platform": null, "requires_dist": ["anyio>=3.0.0,<4"], "requires_python": ">=3.7", "files": [], "_cache_version": "1.0.0"}

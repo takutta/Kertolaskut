@@ -1,1 +1,0 @@
-9999999999{"name": "Kivy4", "version": "5.2.3", "summary": "This package allows you to create Kivy projects faster with a pre-made kivy template.", "platform": null, "requires_dist": ["kivy", "kivymd", "darkdetect", "screeninfo", "pyperclip"], "requires_python": ">=3.7", "files": [], "_cache_version": "1.0.0"}

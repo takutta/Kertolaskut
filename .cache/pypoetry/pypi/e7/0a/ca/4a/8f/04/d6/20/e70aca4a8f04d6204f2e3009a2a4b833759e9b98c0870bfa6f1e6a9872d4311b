@@ -1,1 +1,0 @@
-9999999999{"name": "commonmark", "version": "0.9.1", "summary": "Python parser for the CommonMark Markdown spec", "platform": "", "requires_dist": ["hypothesis (==3.55.3) ; extra == 'test'", "flake8 (==3.7.8) ; extra == 'test'", "future (>=0.14.0) ; python_version < \"3\""], "requires_python": "", "files": [], "_cache_version": "1.0.0"}
