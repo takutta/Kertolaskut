@@ -1,3 +1,7 @@
 html, body {
     height: 100%;
 }
+
+.yhtakuin {border:none}
+.lasku {min-width:120px}
+.center {text-align:center}

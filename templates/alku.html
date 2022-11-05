@@ -1,22 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
 <h1 class="jumbotron display-1 justify-content-center">Kertolaskuja</h1>
 <p class="lead">Valitse haluamasi kertolaskut.</p>
-<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-   <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
-   <label class="btn btn-outline-primary" for="btncheck2">2</label>
-   <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-   <label class="btn btn-outline-primary" for="btncheck3">3</label>
-   <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
-   <label class="btn btn-outline-primary" for="btncheck4">4</label>
-   <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
-   <label class="btn btn-outline-primary" for="btncheck5">5</label>
-   <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
-   <label class="btn btn-outline-primary" for="btncheck6">6</label>
-   <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off">
-   <label class="btn btn-outline-primary" for="btncheck7">7</label>
-   <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off">
-   <label class="btn btn-outline-primary" for="btncheck8">8</label>
-   <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off"><label class="btn btn-outline-primary" for="btncheck9">9</label>
-</div>
-<div class="col-12">
-   <button type="submit" class="btn btn-primary mt-3" >Aloita</button>
-</div>
+<form action = "laskut" method = "POST">
+   <div class="form-group">
+      <div class="btn-group" role="group">
+         <input type="checkbox" class="btn-check" id="taulu2" name="taulu2" autocomplete="off">
+         <label class="btn btn-outline-primary" for="taulu2">2</label>
+         <input type="checkbox" class="btn-check" id="taulu3" name="taulu3" autocomplete="off">
+         <label class="btn btn-outline-primary" for="taulu3">3</label>
+         <input type="checkbox" class="btn-check" id="taulu4" name="taulu4" autocomplete="off">
+         <label class="btn btn-outline-primary" for="taulu4">4</label>
+         <input type="checkbox" class="btn-check" id="taulu5" name="taulu5" autocomplete="off">
+         <label class="btn btn-outline-primary" for="taulu5">5</label>
+         <input type="checkbox" class="btn-check" id="taulu6" name="taulu6" autocomplete="off">
+         <label class="btn btn-outline-primary" for="taulu6">6</label>
+         <input type="checkbox" class="btn-check" id="taulu7" name="taulu7" autocomplete="off">
+         <label class="btn btn-outline-primary" for="taulu7">7</label>
+         <input type="checkbox" class="btn-check" id="taulu8" name="taulu8" autocomplete="off">
+         <label class="btn btn-outline-primary" for="taulu8">8</label>
+         <input type="checkbox" class="btn-check" id="taulu9" name="taulu9" autocomplete="off">
+         <label class="btn btn-outline-primary" for="taulu9">9</label>
+      </div>
+   </div>
+   <div class="form-group">
+      <div class="col-12">
+         <button type="submit" class="btn btn-primary mt-3" >Aloita</button>
+      </div>
+   </div>
+</form>
+{% endblock %}
