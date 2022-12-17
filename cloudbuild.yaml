@@ -1,13 +1,20 @@
-steps:
-# Build the container image
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/superb-robot-371714/kertolaskut', '.']
-# Push the container image to Container Registry
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/superb-robot-371714/kertolaskut']
-# Deploy container image to Cloud Run
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['run', 'deploy', 'kertolaskut', '--image', 'gcr.io/superb-robot-371714/kertolaskut', '--region', 'europe-north1']
-images:
-- gcr.io/superb-robot-371714/kertolaskut
+ steps:
+ # Build the container image
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['build', '-t', 'eu.gcr.io/superb-robot-371714/kertolaskut:$COMMIT_SHA', '.']
+ # Push the container image to Container Registry
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['push', 'eu.gcr.io/superb-robot-371714/kertolaskut:$COMMIT_SHA']
+ # Deploy container image to Cloud Run
+ - name: 'eu.gcr.io/google.com/cloudsdktool/cloud-sdk'
+   entrypoint: gcloud
+   args:
+   - 'run'
+   - 'deploy'
+   - 'kertolaskut'
+   - '--image'
+   - 'eu.gcr.io/superb-robot-371714/kertolaskut:$COMMIT_SHA'
+   - '--region'
+   - 'europe-north1'
+ images:
+ - 'eu.gcr.io/superb-robot-371714/kertolaskut:$COMMIT_SHA'
