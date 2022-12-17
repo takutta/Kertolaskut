@@ -15,6 +15,6 @@
    - '--image'
    - 'eu.gcr.io/superb-robot-371714/kertolaskut:$COMMIT_SHA'
    - '--region'
-   - 'europe-north1'
+   - 'global'
  images:
  - 'eu.gcr.io/superb-robot-371714/kertolaskut:$COMMIT_SHA'
