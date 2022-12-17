@@ -12,4 +12,4 @@ RUN chmod 444 requirements.txt
 ENV PORT 8080
 ENV FLASK_ENV=production
 # Run the web service on container startup.
-CMD [ "waitress-serve", "--port $PORT", "app:app" ]
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app
