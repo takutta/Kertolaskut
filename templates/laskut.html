@@ -1,22 +1,42 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<p class="jumbotron display-1 justify-content-center center">
+  {{session['pisteet']}} / {{session['pisteet_max']}}
+</p>
 
-{% block content %}
-<p class="jumbotron display-1 justify-content-center center">{{session['pisteet']}} / {{session['pisteet_max']}}</p>
-  
 <div class="progress">
-  <div class="progress-bar progress-bar-striped" role="progressbar" aria-label="Basic example" style="width: {{session['piste_prosentti']}}%"></div>
-  <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" aria-label="Danger striped example" style="width: {{session['virhe_prosentti']}}%"></div>
-</div><br>
+  <div
+    class="progress-bar progress-bar-striped"
+    role="progressbar"
+    aria-label="Basic example"
+    style="width: {{session['piste_prosentti']}}%"
+  ></div>
+  <div
+    class="progress-bar progress-bar-striped bg-danger"
+    role="progressbar"
+    aria-label="Danger striped example"
+    style="width: {{session['virhe_prosentti']}}%"
+  ></div>
+</div>
+<br />
 
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-primary btn-lg disabled lasku">{{session['kertoja']}} x {{session['kerrottava']}}</button>
-    <button type="button" class="btn btn-lg disabled yhtakuin">=</button>
-    <form action = "laskut" method = "POST" class="d-flex">
-      <input class="form-control me-2" id="vastaus" name="vastaus" type="number" min="0" max="100" autofocus>
-    
-    <button type="submit" class="btn btn-primary btn-lg" >Lähetä</button>
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-primary btn-lg disabled lasku">
+    {{session['kertoja']}} x {{session['kerrottava']}}
+  </button>
+  <button type="button" class="btn btn-lg disabled yhtakuin">=</button>
+  <form action="laskut" method="POST" class="d-flex">
+    <input
+      class="form-control me-2"
+      id="vastaus"
+      name="vastaus"
+      type="number"
+      min="0"
+      max="100"
+      autofocus
+    />
+
+    <button type="submit" class="btn btn-primary btn-lg">Lähetä</button>
   </form>
-  </div>
-
+</div>
 
 {% endblock %}
