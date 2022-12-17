@@ -12,4 +12,4 @@ RUN chmod 444 requirements.txt
 ENV PORT 8080
 ENV FLASK_ENV=production
 # Run the web service on container startup.
-CMD [ "waitress-serve", "app:app" ]
+CMD [ "waitress-serve", "--port", "8080", "app:app" ]
