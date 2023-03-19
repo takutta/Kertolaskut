@@ -12,11 +12,11 @@ RUN chmod 444 requirements.txt
 RUN apt-get update && apt-get install -y npm
 RUN npm install tailwindcss flowbite
 RUN npx tailwindcss init -p
-RUN npx tailwindcss -i static/css/main.css -o static/dist/main.css
-
+RUN npx tailwindcss -i ./app/static/src/main.css -o ./app/static/css/main.css
+RUN npm run build:css
 ENV PORT 8080
 ENV FLASK_ENV=production
 
-RUN npm run build:css
+
 # Run the web service on container startup.
 CMD [ "waitress-serve", "--port", "8080", "main:create_app" ]
