@@ -25,4 +25,6 @@ ENV FLASK_ENV=production
 ENV FLASK_APP=main.py
 
 # Run the web service on container startup.
-CMD [ "waitress-serve", "--port", "8080", "main:app" ]
+EXPOSE 8080
+CMD [ "flask", "run","--host","0.0.0.0","--port","8080"]
+# CMD [ "waitress-serve", "--port", "8080", "main:app" ]

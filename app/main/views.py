@@ -29,7 +29,7 @@ from .controllers import (
 from app import db
 from sqlalchemy import select, String
 from datetime import datetime
-import giphypop
+import giphypop, os
 
 
 @main.route("/", methods=["GET", "POST"])
@@ -135,7 +135,7 @@ def tasot():
 def level_change():
     session["user_emoji"] = user_emoji(session.get("pelaaja"))
     session["user_level"] = user_level(session.get("pelaaja"))
-    giphy_api_key = os.environ.get('GIPHY_API_KEY')
+    giphy_api_key = os.environ.get("GIPHY_API_KEY")
     g = giphypop.Giphy(api_key=giphy_api_key)
     gif = g.random_gif("congratulations")
     print(gif.media_url)
