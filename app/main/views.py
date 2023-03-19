@@ -135,11 +135,11 @@ def tasot():
 def level_change():
     session["user_emoji"] = user_emoji(session.get("pelaaja"))
     session["user_level"] = user_level(session.get("pelaaja"))
-    g = giphypop.Giphy(api_key="zLJPR01eRFGpbQHSjDLnSZlFEZ5FiXEg")
+    giphy_api_key = os.environ.get('GIPHY_API_KEY')
+    g = giphypop.Giphy(api_key=giphy_api_key)
     gif = g.random_gif("congratulations")
     print(gif.media_url)
     return render_template("level_change.jinja", gif=gif.media_url)
-
 
 
 def flash_errors(form):
