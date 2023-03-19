@@ -1,0 +1,25 @@
+{% extends "base.jinja" %}
+
+{% block body%}bg-white{%endblock%}
+
+{% block header %}
+<div class="container max-w-sm m-5 mx-auto">
+    <div class="max-w-sm p-6 bg-gray-100 border border-gray-200 rounded-lg shadow grey-bg">
+        <h1 class="mb-4 text-4xl text-5xl font-extrabold leading-none tracking-tight text-center text-gray-900">
+            Kertolaskut</h1>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="p-4 mb-2 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+            role="alert">
+            <span>{{ message }}</span>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        {% endblock %}
+
+        {% block footer%}
+    </div>
+</div>
+{% endblock %}

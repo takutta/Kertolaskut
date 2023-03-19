@@ -1,0 +1,111 @@
+{% extends "reunukset.jinja" %}
+
+{% block title %}Etusivu{% endblock %}
+{% block content %}
+
+<form action="/" method="post">
+    {{ form.csrf_token }}
+
+    <ul class="flex flex-wrap mb-4 -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent"
+        role="tablist">
+        <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 transition-colors duration-200 border-b-2 rounded-t-lg"
+                id="jatka-aiempaa-tab" data-tabs-target="#jatka-aiempaa" type="button" role="tab"
+                aria-controls="jatka-aiempaa" aria-selected="false">Jatka aiempaa</button>
+        </li>
+        <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 transition-colors duration-200 border-b-2 rounded-t-lg"
+                id="uusi-pelaaja-tab" data-tabs-target="#uusi-pelaaja" type="button" role="tab"
+                aria-controls="uusi-pelaaja" aria-selected="false">Uusi pelaaja</button>
+        </li>
+
+    </ul>
+
+
+
+    <div id="myTabContent">
+        <div class="hidden rounded-lg" id="uusi-pelaaja" role="tabpanel" aria-labelledby="uusi-pelaaja-tab">
+
+
+            <ul class="grid w-full grid-cols-4 gap-2">
+
+                {% for value, label in form.vanha.choices[:12] %}
+                <li>
+                    <input class="hidden peer" type="radio" name="{{ form.vanha.name }}"
+                        id="{{ form.vanha.id }}_{{ value }}" value="{{ value }}">
+                    <label
+                        class="inline-flex items-center justify-between w-full p-5 text-gray-500 transition-colors duration-200 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 hover:border-gray-300 peer-checked:bg-blue-100"
+                        for="{{ form.vanha.id }}_{{ value }}">
+                        <div class="block">
+                            <span class="mx-auto text-3xl">{{ label }}</span>
+                        </div>
+                    </label>
+                </li>
+                {% endfor %}
+
+
+
+            </ul>
+        </div>
+        <div class="hidden rounded-lg " id="jatka-aiempaa" role="tabpanel" aria-labelledby="jatka-aiempaa-tab">
+            <ul class="grid w-full grid-cols-4 gap-2">
+                {% for value, label in form.pelaaja.choices %}
+                <li>
+                    <input class="hidden peer" type="radio" name="{{ form.pelaaja.name }}"
+                        id="{{ form.pelaaja.id }}_{{ value }}" value="{{ value }}">
+                    <label
+                        class="inline-flex items-center justify-between w-full p-5 text-gray-500 transition-colors duration-200 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 hover:border-gray-300 peer-checked:bg-blue-100"
+                        for="{{ form.pelaaja.id }}_{{ value }}">
+                        <div class="block">
+                            <span class="mx-auto text-3xl">{{ label }}</span>
+                        </div>
+                    </label>
+                </li>
+                {% endfor %}
+
+            </ul>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="mb-4">
+        {{ form.moodi.label(class_="block mb-2 mt-4 text-sm font-medium text-gray-900") }}
+
+        <ul class="grid w-full grid-cols-2 gap-4">
+            {% for value, label in form.moodi.choices %}
+            <li>
+                <input class="hidden peer" type="radio" name="{{ form.moodi.name }}"
+                    id="{{ form.moodi.id }}_{{ value }}" value="{{ value }}">
+                <label
+                    class="inline-flex items-center justify-between w-full p-5 text-gray-500 transition-colors duration-200 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:border-gray-300 peer-checked:bg-blue-100 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100"
+                    for="{{ form.moodi.id }}_{{ value }}">
+                    <div class="block">
+                        <span class="align-center">{{ label }}</span>
+                    </div>
+                </label>
+            </li>
+            {% endfor %}
+
+        </ul>
+
+
+
+
+    </div>
+    <div class="text-center">
+        {{ form.submit(class_="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none
+        focus:ring-blue-300 cursor-pointer transition-colors duration-200 font-medium rounded-lg text-sm w-full
+        sm:w-auto px-5 py-2.5
+        text-center ")
+        }}</div>
+
+
+
+</form>
+{% endblock %}
+
+{% block scripts%}{{super()}}
+<script src="{{ url_for('static', filename='js/poistaValinnat_vanha_pelaaja.js') }}" </script>{% endblock %}

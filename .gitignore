@@ -29,6 +29,8 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+node_modules
+
 
 # PyInstaller
 #  Usually these files are written by a python scriptpip install Flask from a template
@@ -97,6 +99,9 @@ ipython_config.py
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow
 __pypackages__/
 
+#Dev database
+data-dev.sqlite
+
 # Celery stuff
 celerybeat-schedule
 celerybeat.pid
@@ -119,6 +124,8 @@ venv.bak/
 
 # Rope project settings
 .ropeproject
+
+Dockerfile
 
 # mkdocs documentation
 /site

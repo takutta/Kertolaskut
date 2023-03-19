@@ -1,0 +1,108 @@
+{% extends "reunukset.jinja" %}
+{% macro star_empty() %}
+<svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-300 fill-white" width="48" height="48" viewBox="0 0 24 24"
+    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
+    </path>
+</svg>
+{% endmacro %}
+
+{% macro star_half() %}
+<svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-300 " width="48" height="48" viewBox="0 0 24 24"
+    stroke-width="2" stroke="yellow" fill="yellow" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path
+        d="M12 1a.993 .993 0 0 1 .823 .443l.067 .116l2.852 5.781l6.38 .925c.741 .108 1.08 .94 .703 1.526l-.07 .095l-.078 .086l-4.624 4.499l1.09 6.355a1.001 1.001 0 0 1 -1.249 1.135l-.101 -.035l-.101 -.046l-5.693 -3l-5.706 3c-.105 .055 -.212 .09 -.32 .106l-.106 .01a1.003 1.003 0 0 1 -1.038 -1.06l.013 -.11l1.09 -6.355l-4.623 -4.5a1.001 1.001 0 0 1 .328 -1.647l.113 -.036l.114 -.023l6.379 -.925l2.853 -5.78a.968 .968 0 0 1 .904 -.56zm0 3.274v12.476a1 1 0 0 1 .239 .029l.115 .036l.112 .05l4.363 2.299l-.836 -4.873a1 1 0 0 1 .136 -.696l.07 -.099l.082 -.09l3.546 -3.453l-4.891 -.708a1 1 0 0 1 -.62 -.344l-.073 -.097l-.06 -.106l-2.183 -4.424z"
+        stroke-width="0" fill="currentColor"></path>
+</svg>
+{% endmacro %}
+
+{% macro star_full() %}
+<svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-300 fill-yellow-300" width="48" height="48"
+    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+    stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path
+        d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"
+        stroke-width="0" fill="currentColor"></path>
+</svg>
+{% endmacro %}
+
+{% block title %}Tasot{% endblock %}
+
+{% block content %}
+<aside class="flex mb-1 font-medium leading-6">
+
+    <a class="flex mr-8 text-gray-500 transition-colors duration-200 hover:text-gray-900 " href="/"><span
+            aria-hidden="true" class="mr-2">←</span>Takaisin</a>
+</aside>
+
+
+
+<div class="flex justify-between mb-1">
+    <span class="self-center text-lg text-blue-700 align-center">Taso {{session["user_level"]}}</span>
+    <span class="text-3xl text-blue-700">{{session["user_emoji"]}}</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2.5">
+    <div class="bg-blue-600 h-2.5 rounded-full" style="width: {{ 10 * session['user_level']}}%"></div>
+</div>
+
+</p>
+<div class="flex justify-center mt-5">
+    {% for i in range(session["stars"][0]) %}
+    {{star_full()}}
+    {% endfor %}
+
+    {% for i in range(session["stars"][1]) %}
+    {{star_half()}}
+    {% endfor %}
+
+    {% for i in range(session["stars"][2]) %}
+    {{star_empty()}}
+    {% endfor %}
+
+
+</div>
+
+<form action="/tasot" method="post">{{ form.csrf_token }}
+    <div class="flex mt-5">
+
+        <span id="dropdown-button" data-dropdown-toggle="dropdown"
+            class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-md font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg "
+            type="button">{{session["next_calc"][1]}} x {{session["next_calc"][2]}} = </span>
+
+        <div class="relative w-full">
+
+
+            {{ form.answer(class_="transition-colors duration-200 bg-gray-50 w-60 border border-gray-300 text-gray-900
+            block p-2.5 w-full z-20 text-md rounded-r-lg border-l-gray-100 border-l-2 border border-gray-300
+            ", autofocus=true)}}
+            {{ form.submit(class_="transition-colors duration-200 text-white bg-blue-700 hover:bg-blue-800
+            cursor-pointer
+            absolute top-0 right-0 p-2.5 text-md font-medium text-white bg-blue-700 rounded-r-lg border border-blue-700
+            hover:bg-blue-800 ")
+            }}
+
+
+
+        </div>
+    </div>
+</form>
+
+
+
+
+
+{% if form.answer.errors %}
+<ul>
+    {% for error in form.answer.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+</div>
+</form>
+
+
+{% endblock %}

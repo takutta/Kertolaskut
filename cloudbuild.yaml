@@ -18,3 +18,5 @@
    - 'global'
  images:
  - 'eu.gcr.io/superb-robot-371714/kertolaskut/kertolaskut:$COMMIT_SHA'
+ logging:
+   mode: NONE
