@@ -7,9 +7,9 @@ from flask import flash
 class IndexForm(FlaskForm):
     pelaaja = RadioField("Pelaaja", validators=[Optional()])
     vanha = RadioField("Vanha", validators=[Optional()])
-    moodi = RadioField(
-        "Moodi", choices=[("tasot", "Tasot"), ("seikkailu", "Seikkailu")]
-    )
+    # moodi = RadioField(
+    #     "Moodi", choices=[("tasot", "Tasot"), ("seikkailu", "Seikkailu")]
+    # )
     submit = SubmitField("Aloita")
 
     def validate(self, extra_validators=None):

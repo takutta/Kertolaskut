@@ -48,10 +48,12 @@ def index():
             session["pelaaja"] = new_user
         else:
             session["pelaaja"] = form.pelaaja.data
-        if form.moodi.data == "seikkailu":
-            return redirect(url_for(".seikkailu"))
-        elif form.moodi.data == "tasot":
-            return redirect(url_for(".tasot"))
+
+        return redirect(url_for(".tasot"))
+        # if form.moodi.data == "seikkailu":
+        #     return redirect(url_for(".seikkailu"))
+        # elif form.moodi.data == "tasot":
+        #     return redirect(url_for(".tasot"))
     else:
         flash_errors(form)
 
