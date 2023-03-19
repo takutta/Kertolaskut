@@ -9,6 +9,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN chmod 444 main.py
 RUN chmod 444 requirements.txt
 
+
+RUN apt-get install -y npm
+RUN npm install tailwindcss flowbite
+RUN npx tailwindcss init -p
+RUN npx tailwindcss -i static/css/main.css -o static/dist/main.css
+
 ENV PORT 8080
 ENV FLASK_ENV=production
 
