@@ -20,4 +20,4 @@ ENV FLASK_ENV=production
 
 
 # Run the web service on container startup.
-CMD [ "waitress-serve", "--port", "8080", "main:create_app" ]
+CMD ["waitress-serve", "--port", "8080", "main:create_app('$FLASK_CONFIG')"]
